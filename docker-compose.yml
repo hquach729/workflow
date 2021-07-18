@@ -1,0 +1,16 @@
+version: '3'
+services:
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile.dev
+    ports: # expose the private network port to our local netowrk
+      - 80:80
+    restart: always
+  web:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./client:/app # we mount the file here so our change can be refletcted on the react page
+      - /app/node_modules

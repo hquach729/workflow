@@ -1,0 +1,7 @@
+{
+	"scripts": {
+		"clean": "docker rm $(docker ps -a -f status=exited -q) && docker rmi $(docker images -a -q) && docker volume ls | awk '{print $2}' | grep -v \"VOLUME\" | xargs docker volume rm",
+		"build-dev": "docker compose down && docker compose up --build",
+		"build-prod": "docker compose down && docker compose -f docker-compose.prod.yml up --build"
+	}
+}

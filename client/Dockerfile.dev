@@ -1,0 +1,8 @@
+# Start React Development Server on default port 3000
+# Our Nginx Proxy will foward any incoming traffic with url / to this 
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD [ "npm", "run", "start" ]
