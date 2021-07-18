@@ -11,7 +11,7 @@ script:
 
 # Build image for Production Deployment
 after_success:
-  - docker build -t hquach729/workflow-proxy -f ./client/Dockerfile.prod ./proxy
+  - docker build -t hquach729/workflow-proxy -f ./proxy/Dockerfile.prod ./proxy
   - docker build -t hquach729/workflow-client -f ./client/Dockerfile.prod ./client
   # Log in to the docker CLI, send the password to the next command in in the pipe
   - echo "DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
